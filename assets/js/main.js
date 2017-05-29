@@ -79,7 +79,7 @@ function initMap() {
 
 
      var latitud, longitud, miUbicacion;
-    /* var funcionExito=function(posicion){
+    /* var funcionEncontrado=function(posicion){
        latitud=posicion.coords.latitude;
        longitud=posicion.coords.longitude;
 
@@ -91,7 +91,7 @@ function initMap() {
        map.setZoom(18);
        map.setCenter({lat:latitud, lng:longitud});
      }*/
-     funcionExito=function(posicion){
+    /* funcionEncontrado=function(posicion){
         latitud=posicion.coords.latitude;
         longitud=posicion.coords.longitude;
 
@@ -107,7 +107,22 @@ function initMap() {
 
      window.onload= function buscar(){
        if(navigator.geolocation){
-         navigator.geolocation.getCurrentPosition(funcionExito);
+         navigator.geolocation.getCurrentPosition(funcionEncontrado);
 
        }
-     }
+     }*/
+
+     if (navigator.geolocation) {
+         navigator.geolocation.getCurrentPosition(function(position) {
+           var pos = {
+             lat: position.coords.latitude,
+             lng: position.coords.longitude
+           };
+
+           infoWindow.setPosition(pos);
+           infoWindow.setContent('Location found.');
+           map.setCenter(pos);
+         }, function() {
+           handleLocationError(true, infoWindow, map.getCenter());
+         });
+       }
