@@ -76,9 +76,14 @@ input{
   height: 500px;
 }
 
+.cel-hr{
+  margin-left: 0; !important
+}
+
 .cel-img{
   width: 300px;
   margin-top: 50px;
+  margin-left: 100px;
 }
 
 .cel-texto{
@@ -146,7 +151,7 @@ footer{
   height: 550px;
 }
 
-hr{
+.hr-footer{
   text-align: center;
   margin-left: 90px;
   width: 600px;
